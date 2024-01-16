@@ -36,6 +36,8 @@ jobs:
       uses: gradle/gradle-build-action@bd5760595778326ba7f1441bcf7e88b49de61a25 # v2.6.0
       with:
         arguments: build --info
+    - name: 5. Docker Image Build
+      run: docker build ./xinfra/docker -t ${{ secrets.DOCKER_USERNAME }}/istory -f ./xinfra/docker/Dockerfile
 
     # - name: Publish to GitHub Packages
     #   uses: gradle/gradle-build-action@bd5760595778326ba7f1441bcf7e88b49de61a25 # v2.6.0
