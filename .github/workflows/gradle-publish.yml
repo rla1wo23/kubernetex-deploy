@@ -45,4 +45,4 @@ jobs:
         password: ${{ secrets.DOCKER_TOKEN }}
         logout: true
     - name: 7.Docker Push
-      uses: docker push ${{ secrets.DOCKER_USERNAME }}/istory
+      run: docker push ${{ secrets.DOCKER_USERNAME }}/istory
