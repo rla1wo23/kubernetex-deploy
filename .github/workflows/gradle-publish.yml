@@ -18,8 +18,20 @@ jobs:
         distribution: 'temurin'
         server-id: github 
         settings-path: ${{ github.workspace }} 
+
     - name: Run chmod to make gradlew executable
       run: chmod +x ./gradlew
+    - name: Install Mysql
+      uses: mirromutth/mysql-action@v1.1
+      with:
+        host port: 3306
+        container port: 3306
+        mysql version: '8.0'
+        mysql database: 'istory'
+        mysql root password: admin123
+        mysql user: 'dangtong'
+        mysql password: 'admin123'
+
     - name: 3. Build with Gradle
       uses: gradle/gradle-build-action@bd5760595778326ba7f1441bcf7e88b49de61a25 # v2.6.0
       with:
@@ -32,3 +44,4 @@ jobs:
     #   env:
     #     USERNAME: ${{ github.actor }}
     #     TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    
